@@ -1,0 +1,11 @@
+C:\PROJECTS\GitHub\TDD.Katas\TDD.Katas\TDD.Katas\bin\Debug\TDD.Katas.dll
+C:\PROJECTS\GitHub\TDD.Katas\TDD.Katas\TDD.Katas\bin\Debug\TDD.Katas.pdb
+C:\PROJECTS\GitHub\TDD.Katas\TDD.Katas\TDD.Katas\bin\Debug\NSubstitute.dll
+C:\PROJECTS\GitHub\TDD.Katas\TDD.Katas\TDD.Katas\bin\Debug\nunit.framework.dll
+C:\PROJECTS\GitHub\TDD.Katas\TDD.Katas\TDD.Katas\bin\Debug\xunit.dll
+C:\PROJECTS\GitHub\TDD.Katas\TDD.Katas\TDD.Katas\bin\Debug\NSubstitute.xml
+C:\PROJECTS\GitHub\TDD.Katas\TDD.Katas\TDD.Katas\bin\Debug\nunit.framework.xml
+C:\PROJECTS\GitHub\TDD.Katas\TDD.Katas\TDD.Katas\bin\Debug\xunit.xml
+C:\PROJECTS\GitHub\TDD.Katas\TDD.Katas\TDD.Katas\obj\Debug\TDD.Katas.csprojResolveAssemblyReference.cache
+C:\PROJECTS\GitHub\TDD.Katas\TDD.Katas\TDD.Katas\obj\Debug\TDD.Katas.dll
+C:\PROJECTS\GitHub\TDD.Katas\TDD.Katas\TDD.Katas\obj\Debug\TDD.Katas.pdb
