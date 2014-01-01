@@ -11,14 +11,20 @@ namespace TDD.Katas.StringCalculator
     /// </summary>
     public class StringCalculator
     {
-        public int Add(string numbers)
+        public int Add(string expression)
         {
-            if (string.IsNullOrEmpty(numbers))
+            if (string.IsNullOrEmpty(expression))
             {
                 return 0;
             }
 
-            return int.Parse(numbers);
+            var args = GetIntArrayFromExpression(expression);
+            return args.Sum();
+        }
+
+        private IEnumerable<int> GetIntArrayFromExpression(string expression)
+        {
+            return expression.Split(',').Select(Int32.Parse);
         }
     }
 }
