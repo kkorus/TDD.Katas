@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TDD.Katas.StringCalculator
 {
@@ -24,7 +22,14 @@ namespace TDD.Katas.StringCalculator
 
         private IEnumerable<int> GetIntArrayFromExpression(string expression)
         {
-            return expression.Split(',').Select(Int32.Parse);
+            var delimiters = new char[] {',', '\n'};
+
+            if (expression.StartsWith("//"))
+            {
+                //var delimiter = expression.Skip(2).TakeWhile(x => x == Environment.NewLine);
+            }
+
+            return expression.Split(delimiters).Select(Int32.Parse);
         }
     }
 }

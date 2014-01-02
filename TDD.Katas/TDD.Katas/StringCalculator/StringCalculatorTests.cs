@@ -4,12 +4,13 @@ namespace TDD.Katas.StringCalculator
 {
     public class StringCalculatorTest
     {
-        [Test]
-        public void Add_EmptyString_ReturnsZero()
+        [TestCase("")]
+        [TestCase(null)]
+        public void Add_EmptyString_ReturnsZero(string numbers)
         {
             var sc = CreateCalculator();
 
-            int result = sc.Add("");
+            int result = sc.Add(numbers);
 
             Assert.That(result, Is.EqualTo(0));
         }
@@ -34,7 +35,7 @@ namespace TDD.Katas.StringCalculator
             var sc = CreateCalculator();
 
             int result = sc.Add(numbers);
-            
+
             Assert.AreEqual(expected, result);
         }
 
@@ -47,6 +48,37 @@ namespace TDD.Katas.StringCalculator
             int result = sc.Add(numbers);
 
             Assert.AreEqual(expected, result);
+        }
+
+        [TestCase("1\n2\n3", 6)]
+        [TestCase("0\n1\n2", 3)]
+        public void Add_MultipleNewLineDelimitedNumbers_SumsThemUp(string numbers, int expected)
+        {
+            var sc = CreateCalculator();
+
+            int result = sc.Add(numbers);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCase("1,2\n3", 6)]
+        public void Add_MultipleCommaAndNewLineDelimitedNumbers_SumsThemUp(string numbers, int expected)
+        {
+            var sc = CreateCalculator();
+
+            int result = sc.Add(numbers);
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCase("//;\n1;2", 3)]
+        public void Add_MultipleNumbersWithCustomDelimiter_SumsThemUp(string numbers, int expected)
+        {
+            var sc = CreateCalculator();
+
+            int result = sc.Add(numbers);
+
+            Assert.AreEqual(expected, result); 
         }
 
         private static StringCalculator CreateCalculator()
