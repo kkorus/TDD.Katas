@@ -22,14 +22,16 @@ namespace TDD.Katas.StringCalculator
 
         private IEnumerable<int> GetIntArrayFromExpression(string expression)
         {
-            var delimiters = new char[] {',', '\n'};
+            var delimiters = new char[] {',', '\n'}.ToList();
 
             if (expression.StartsWith("//"))
             {
-                //var delimiter = expression.Skip(2).TakeWhile(x => x == Environment.NewLine);
+                var delimiter = expression[2];
+                delimiters.Add(delimiter);
             }
 
-            return expression.Split(delimiters).Select(Int32.Parse);
+            var test = expression.SkipWhile(x => x != '\n');
+            return expression.SkipWhile(x => x != '\n').ToString().Split(delimiters.ToArray()).Select(Int32.Parse);
         }
     }
 }
