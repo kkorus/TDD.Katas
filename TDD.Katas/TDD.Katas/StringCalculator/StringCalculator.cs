@@ -9,29 +9,38 @@ namespace TDD.Katas.StringCalculator
     /// </summary>
     public class StringCalculator
     {
-        public int Add(string expression)
+        private readonly List<char> _delimeters = new List<char>(3) { ',', '\n' };
+
+        public int Add(string numbers)
         {
-            if (string.IsNullOrEmpty(expression))
-            {
+            if (string.IsNullOrWhiteSpace(numbers))
                 return 0;
+
+            if (numbers.StartsWith("//"))
+            {
+                _delimeters.Add(numbers[2]);
+                numbers = numbers.Substring(4);
             }
 
-            var args = GetIntArrayFromExpression(expression);
-            return args.Sum();
+            return ParseNumbersToPositiveIntegers(numbers).Sum();
         }
 
-        private IEnumerable<int> GetIntArrayFromExpression(string expression)
+        public IList<int> ParseNumbersToPositiveIntegers(string numbers)
         {
-            var delimiters = new char[] {',', '\n'}.ToList();
+            var parsedNumbers = numbers
+                .Split(_delimeters.ToArray())
+                .Select(int.Parse)
+                .Where(x => x <= 1000)
+                .ToList();
 
-            if (expression.StartsWith("//"))
+            var negatives = parsedNumbers.Where(x => x < 0).ToArray();
+            if (negatives.Any())
             {
-                var delimiter = expression[2];
-                delimiters.Add(delimiter);
+                var message = $"Negatives not allowed: {string.Join(", ", negatives)}";
+                throw new InvalidOperationException(message);
             }
 
-            var test = expression.SkipWhile(x => x != '\n');
-            return expression.SkipWhile(x => x != '\n').ToString().Split(delimiters.ToArray()).Select(Int32.Parse);
+            return parsedNumbers;
         }
     }
 }
